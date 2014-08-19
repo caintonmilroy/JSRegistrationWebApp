@@ -1,0 +1,11 @@
+input:focus:required:invalid {
+    background-color: pink;
+}
+
+input:required:valid {
+    background-color: palegreen;
+}
+
+input:focus:required:valid {
+    background-color: palegreen;
+}

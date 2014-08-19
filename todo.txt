@@ -1,0 +1,17 @@
+7th May Review:
+* DOCTYPE => html
+* script tags auto-javascript
+* changed test helper functions
+* invalid letters - scriptular
+-- only letters in firstname/lastname field - DONE
+
+
+TODO + input box validation
+-- empty fields + DONE
+-- firstname / lastname should be a maximum of 22 chars + DONE
+-- dates cannot be in the future + DONE
+-- only letters in firstname/lastname field - DONE
+-- Finer grained validation - tell the user what is wrong - exceptions
+
+
+Validation HTML5 style!!

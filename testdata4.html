@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PSP1: Date of Birth Registration</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="uikit/uikit.css">
+<link rel="stylesheet" type="text/css" href="uikit/uikit.min.css">
+<script src="uikit/uikit.js"></script>
+<script src="uikit/uikit.min.js"></script>
+<script src="person.js"></script>
+<script src="datastore.js"></script>
+<script src="formiteration5.js"></script>
+</head>
+
+<body style="margin: 10px 10px;">
+    <div class="alert alert-success">
+        <h1 align = "center">PSP1: Birth Registration</h1>
+    </div>
+<hr />
+    <form id="inputFrom" onsubmit='registerBirthFromPage()'>
+        <label for="firstname">First Name:</label>
+        <input name="firstname" type='text' maxlength="22" pattern="[a-zA-Z]*" title="Maximum 22 uppercase or lowercase letters" id='firstname' value='' placeholder="Enter First Name..."required/>
+        <label for="lastname">Last Name:</label>
+        <input name="lastname" type='text' maxlength="22" pattern="[a-zA-Z]*" title="Maximum 22 uppercase or lowercase letters" id='lastname' placeholder="Enter Last Name..." required/>
+        <label for="dob">D.O.B:</label>
+        <input name="dob" type="date" id="birthDate" value="dd/mm/yy" min="1800-01-01" max="2014-05-16" placeholder="" required/>
+        <input type='submit' value='Add new person'/>
+    </form>
+    <hr/>
+    <table id="details" class="uk-table uk-table-hover uk-table-striped uk-table-condensed" >
+        <tr>
+            <th>First NameName</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Age</th>
+        </tr>
+    </table>
+    <hr/>
+        <input type='file' id='fileSelect' name='selectedFile' />
+    <hr/>
+        <div class="uk-grid">
+            <div class="uk-width-1-2">
+                <h3>Select People</h3>
+                <select id='registeredPeople' size="10" style="width:220px"></select>
+                <input type="button" id="removeSelection" value="Remove" onclick="removePerson()" />
+
+                <p id="registeredPersonInfo"></p>
+
+            </div>
+            <div class="uk-width-1-2">
+                <h3>Files in Storage</h3>
+                  <select id="filesInStorage" size="10" style="width:220px"></select>
+                  <input id="newLocalStoreFilename"/>
+                  <input type="button" id="saveAs" value="Store" onclick="savePeopleIntoFileInLocalStorage()" />
+                 <input type="button" id="loadFromStore" value="Load from Store" onclick="loadFromStore()" />
+            <hr/>
+
+            </div>
+        </div>
+    <hr/>
+        
+    <h1 align ="center"><b>Statistics</b></h1>
+        <hr/>
+        <div padding="10px 10px 10px">
+            <div class="uk-grid">
+                <div class="uk-width-1-3">
+                    <div class="uk-panel uk-panel-box-primary"><h4><br/>
+                        Developed by Cainton Milroy<br/>
+                        Christchurch Polytechnique Institute of Technology(CPIT)<br/>
+                        New Zealand<br/>
+                        e-mail:m.cainton@gmail.com</p>
+
+                    </div>
+                </div>
+                <div class="uk-width-1-3">
+                    <div class="uk-panel uk-panel-box-primary"><h5><b>Total Count:</b></h5>
+                        <h4 id="count" class="uk-button uk-button-primary" type="button" data-uk-button></h4><h5>
+                            <b>Sum:</b></h5>
+                        <h4 class="uk-button uk-button-primary" type="button" data-uk-button id="sumofAge"></h4>
+                        
+
+                        </div>
+                </div>
+                <div class="uk-width-1-3">
+                    <div class="uk-panel uk-panel-box-primary"><h5><b>Mean:</b></h5>
+                        <h4 id="mean" class="uk-button uk-button-primary" type="button" data-uk-button></h4>
+                        <h4>
+                            <b>Standard Deviation:</b></h4>
+                        <p class="uk-button uk-button-primary" type="button" data-uk-button id="standardDeviation"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        document.getElementById('fileSelect').addEventListener('change', registerBirthsFromFile, false);
+        document.getElementById('registeredPeople').addEventListener('change', displayPersonInfo, false);
+        document.getElementById('filesInStorage').addEventListener('change', storedFileSelected, false);
+        updatePage();
+    </script>
+</body>
+</html>
